@@ -201,7 +201,7 @@ function CarouselPrevious({
 
 function CarouselNext({
   className,
-  variant = "outline",
+  variant = "outlined",
   size = "icon",
   ...props
 }: React.ComponentProps<typeof Button>) {
