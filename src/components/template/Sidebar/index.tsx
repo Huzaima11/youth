@@ -43,6 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
         { id: "workspaces", label: "Workspaces", icon: BriefcaseIcon, path: "/workspaces" },
         { id: "meetings", label: "Meetings", icon: VideoCameraIcon, path: "/meetings" },
         { id: "projects-board", label: "Projects Board", icon: ClipboardDocumentListIcon, path: "/projects-board" },
+
     ];
 
     const handleLogout = () => {
@@ -67,26 +68,34 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
 
                 {/* Scrollable Navigation */}
                 <div
-                    className="flex-1 overflow-y-auto px-3 py-4 space-y-1"
-                    style={{
-                        scrollbarWidth: 'thin',
-                        scrollbarColor: '#9ca3af #f9fafb'
-                    }}
+                    className="flex-1 overflow-y-auto px-3 py-4 space-y-1 sidebar-scroll"
                 >
                     <style>{`
-                        .flex-1.overflow-y-auto::-webkit-scrollbar {
+                        .sidebar-scroll {
+                            scrollbar-width: thin;
+                            scrollbar-color: transparent transparent;
+                        }
+                        .sidebar-scroll::-webkit-scrollbar {
                             width: 6px;
                         }
-                        .flex-1.overflow-y-auto::-webkit-scrollbar-track {
-                            background: #f9fafb;
-                            border-radius: 4px;
+                        .sidebar-scroll::-webkit-scrollbar-track {
+                            background: transparent;
+                            border-radius: 0;
                         }
-                        .flex-1.overflow-y-auto::-webkit-scrollbar-thumb {
-                            background: #9ca3af;
-                            border-radius: 4px;
+                        .sidebar-scroll::-webkit-scrollbar-thumb {
+                            background: transparent;
+                            border-radius: 0;
+                            transition: background 0.2s;
                         }
-                        .flex-1.overflow-y-auto::-webkit-scrollbar-thumb:hover {
-                            background: #6b7280;
+                        .sidebar-scroll:hover {
+                            scrollbar-width: thin;
+                            scrollbar-color: #f1f4fa transparent;
+                        }
+                        .sidebar-scroll:hover::-webkit-scrollbar-thumb {
+                            background: #f1f4fa;
+                        }
+                        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+                            background: #f1f4fa !important;
                         }
                     `}</style>
                     {navItems.map((item, index) => (
@@ -107,7 +116,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                     <item.icon
                                         className={clsx(
                                             "h-5 w-5 transition-colors",
-                                            isActive ? "text-primary-700" : "text-gray-500 group-hover:text-gray-700"
+                                            isActive ? "text-primary-700 " : "text-gray-500 group-hover:text-gray-700"
                                         )}
                                     />
                                     <span className="truncate">{item.label}</span>
