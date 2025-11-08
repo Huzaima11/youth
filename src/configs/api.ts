@@ -48,7 +48,7 @@ class ApiService {
   constructor() {
     // Create axios instance with base configuration
     this.instance = axios.create({
-      baseURL: import.meta.env.VITE_BASE_URL || 'https://youth.techsops.com/api',
+      baseURL: import.meta.env.VITE_BASE_URL || 'https://testing.youthacademy.pk/api',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
